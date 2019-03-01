@@ -19,5 +19,5 @@ public interface MyList<E> extends Iterable<E> {
 	public boolean remove (Object obj);
 	public int size();
 
-	
+	// added some comments
 }
