@@ -62,7 +62,7 @@ public class MyLinkedList<E> implements MyList<E> {
 
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method  stub
 		return null;
 	}
 
