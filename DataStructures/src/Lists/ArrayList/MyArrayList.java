@@ -46,14 +46,27 @@ public class MyArrayList<E> implements MyList<E> {
 
 	@Override
 	public boolean add(E element) {
-		// TODO Auto-generated method stub
-		return false;
+		if (isFull()) {
+			grow();
+		}
+		arr[logicalLength] = element;
+		logicalLength++;
+		return true;
 	}
 
 	@Override
 	public void add(int index, E element) {
-		// TODO Auto-generated method stub
-		
+		if (isOutOfBounds(index)) {
+			throw new IndexOutOfBoundsException(index + " doesn't exist");
+		}
+		if (isFull()) {
+			grow();
+		}
+		for (int i = arr.length - 1; i >= index; i--) {
+			arr[i+1] = arr[i];
+		}
+		arr[index] = element;
+		logicalLength++;
 	}
 
 	@Override
@@ -114,6 +127,24 @@ public class MyArrayList<E> implements MyList<E> {
 	public int size() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	private void grow() {
+		int newCapacity = 2 * arr.length;
+		E[] temp = (E[]) new Object[newCapacity];
+		for (int i = 0; i < arr.length; i++) {
+			temp[i] = arr[i];
+		}
+		arr = temp;
+		logicalLength = newCapacity;
+	}
+	
+	private boolean isFull() {
+		return logicalLength == arr.length;
+	}
+	
+	private boolean isOutOfBounds(int index) {
+		return index < 0 || index >= logicalLength;
 	}
 
 }
