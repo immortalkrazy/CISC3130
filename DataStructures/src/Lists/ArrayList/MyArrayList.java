@@ -24,6 +24,7 @@ public class MyArrayList<E> implements MyList<E> {
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
+		
 	}// end of iterator
 
 	private int logicalLength;
