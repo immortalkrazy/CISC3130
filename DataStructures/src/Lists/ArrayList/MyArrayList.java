@@ -146,5 +146,6 @@ public class MyArrayList<E> implements MyList<E> {
 	private boolean isOutOfBounds(int index) {
 		return index < 0 || index >= logicalLength;
 	}
+	
 
 }
