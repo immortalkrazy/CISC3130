@@ -147,5 +147,4 @@ public class MyArrayList<E> implements MyList<E> {
 		return index < 0 || index >= logicalLength;
 	}
 	
-
 }
