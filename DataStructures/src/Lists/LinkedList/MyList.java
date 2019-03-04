@@ -18,6 +18,6 @@ public interface MyList<E> extends Iterable<E> {
 	public E remove (int index);
 	public boolean remove (Object obj);
 	public int size();
-
-	// added some comments
+	
+	
 }
