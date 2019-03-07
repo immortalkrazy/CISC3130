@@ -1,5 +1,4 @@
 package homework_02;
-
 import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -7,7 +6,7 @@ import java.util.Scanner;
 public class Contact implements Comparable<Contact>, Serializable{
   // private data fields
   private String firstName;
-  private String lastName;
+  public String lastName;
   private String phoneNumber;
   private String address;
   private String city;
@@ -30,7 +29,7 @@ public class Contact implements Comparable<Contact>, Serializable{
     this.state = state;
   }
 
-  //constructor with only name and phoneNumber
+  //constructor with onliy name and phoneNumber
   public Contact(String firstName, String lastName, String phoneNumber){
 
     this.firstName = firstName;
