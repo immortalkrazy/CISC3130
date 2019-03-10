@@ -81,12 +81,22 @@ public class TestContactList {
     for(Contact c: contactList){
       System.out.println(c);
     }
+    
+    System.out.println("-----Another Kind Iterator-----");
+    printWithIterator(contactList);
 
     System.out.println(contactList.indexOfContact(c1));
     System.out.println(contactList.indexOfContact(c2));
     System.out.println(contactList.indexOfContact(c7));
     System.out.println(contactList.indexOfContact(c8));
 
+  }
+  
+  public static void printWithIterator(ContactList list) {
+	  Iterator<Contact> cIter = list.iterator();
+	  while(cIter.hasNext()) {
+		  System.out.println(cIter.next());
+	  }
   }
 
   public static void printContactList(ContactList list) {
