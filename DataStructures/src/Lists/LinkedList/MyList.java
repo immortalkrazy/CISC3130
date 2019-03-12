@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 public interface MyList<E> extends Iterable<E> {
 	
-	public Iterator<E> iterator();
 	public boolean add (E element);
 	public void add (int index, E element);
 	public void clear ();
@@ -18,6 +17,6 @@ public interface MyList<E> extends Iterable<E> {
 	public E remove (int index);
 	public boolean remove (Object obj);
 	public int size();
-	
+	public Iterator<E> iterator();
 	
 }
