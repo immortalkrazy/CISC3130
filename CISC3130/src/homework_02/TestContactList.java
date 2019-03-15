@@ -26,6 +26,7 @@ public class TestContactList {
     contactList.addContact(c4);
     contactList.addContact(c5);
     contactList.addContact(c6);
+    
     //contactList.addContact(c7);
     //contactList.addContact(c8);
 
