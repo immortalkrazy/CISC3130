@@ -1,9 +1,16 @@
+/**
+ * 
+ */
 package Stacks;
 
-public class MyStack {
-
-	public MyStack() {
-		// TODO Auto-generated constructor stub
-	}
+/**
+ * @author faisal
+ *
+ */
+public interface MyStack<E> {
+      
+      
+	
+	
 
 }
