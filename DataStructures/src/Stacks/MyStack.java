@@ -10,6 +10,7 @@ package Stacks;
 public interface MyStack<E> {
       
       
+      
 	
 	
 
