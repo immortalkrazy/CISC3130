@@ -1,11 +1,12 @@
 package Sorts;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class SelectionSortGenerics<E> implements Comparable<E> {
+public class SelectionSortGenerics {
 
       private <E> void swap(E[] a, int i, int j) {
             if (i != j) {
@@ -15,7 +16,7 @@ public class SelectionSortGenerics<E> implements Comparable<E> {
             }
       }
 
-      public <E> void selectionSort(E[] a) {
+      public <E extends Comparable<E>> void selectionSort(E[] a) {
             for (int i = 0; i < a.length - 1; i++) {
                   // find index of smallest element
                   int smallest = i;
@@ -47,9 +48,5 @@ public class SelectionSortGenerics<E> implements Comparable<E> {
       }
 
      
-      @Override
-      public int compareTo(E o) {
-            // TODO Auto-generated method stub
-            return 0;
-      }
+      
 }
