@@ -1,141 +1,223 @@
 package Lists.LinkedList;
 
-import java.util.Iterator;
+import java.util.*;
 
-public class MyLinkedList<E> implements MyList<E> {
+public class MyLinkedList <E> implements MyList<E> {
 
-	private static class DListNode<E> {
+    private class MyLinkedListIterator implements Iterator<E> {
 
-		private E data;
-		private DListNode<E> previous;
-		private DListNode<E> next;
+        private DListNode<E> pointer;
 
-		public DListNode() {
+        public MyLinkedListIterator () {
 
-		}
+            pointer = sentinel.getNext();
 
-		public DListNode(E data, DListNode<E> previous, DListNode<E> next) {
-			this.data = data;
-			this.previous = previous;
-			this.next = next;
-		}
+        }
+        public E next() {
 
-		public E getData() {
-			return data;
-		}
+            E old = pointer.getData();
+            pointer = pointer.getNext();
+            return old;
 
-		public void setData(E data) {
-			this.data = data;
-		}
+        }
+        public boolean hasNext() {
 
-		public DListNode<E> getPrevious() {
-			return previous;
-		}
+            return pointer != sentinel;
 
-		public void setPrevious(DListNode<E> previous) {
-			this.previous = previous;
-		}
+        }
 
-		public DListNode<E> getNext() {
-			return next;
-		}
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
 
-		public void setNext(DListNode<E> next) {
-			this.next = next;
-		}
 
-	}// end of DListNode class
+    }// end of Iterator class
 
-	private DListNode<E> head;
-	private DListNode<E> tail;
-	private int numElements;
+    private class DListNode<E> {
 
-	public MyLinkedList() {
-		head = null;
-		tail = null;
-		numElements = 0;
-	}
+        private E data;
+        private DListNode<E> previous;
+        private DListNode<E> next;
 
-	public void addFirst(E element) {
+        public DListNode() {
 
-	}
+            this.data = null;
+            this.previous = null;
+            this.next = null;
+        }
 
-	@Override
-	public Iterator<E> iterator() {
-		// TODO Auto-generated method  stub
-		return null;
-	}
+        public DListNode(E data, DListNode<E> previous, DListNode<E> next) {
+            this. data = data;
+            this.previous = previous;
+            this.next = next;
+        }
 
-	@Override
-	public boolean add(E element) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public E getData() {
+            return data;
+        }
+        public DListNode<E> getPrevious(){
+            return previous;
+        }
+        public DListNode<E> getNext(){
+            return next;
+        }
+        public void setData(E data){
+            this.data = data;
+        }
+        public void setPrevious(DListNode<E> previous){
+            this.previous = previous;
+        }
+        public void setNext(DListNode<E> next){
+            this.next = next;
+        }
 
-	@Override
-	public void add(int index, E element) {
-		// TODO Auto-generated method stub
+    } // end of node class
 
-	}
+    // data fields for Linkedlist class
+    private DListNode<E> sentinel;
+    private int numElements;
 
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
+    public MyLinkedList() {
 
-	}
+        numElements = 0;
+        sentinel = new DListNode<E>();
+        sentinel.setData(null);
+        sentinel.setNext(sentinel);
+        sentinel.setPrevious(sentinel);
 
-	@Override
-	public boolean contains(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    }
 
-	@Override
-	public E get(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void addFirst(E e) {
 
-	@Override
-	public E set(int index, E element) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        DListNode<E> temp = new DListNode<>(e, null, null);
 
-	@Override
-	public int indexOf(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+        if (sentinel.next == sentinel) {
 
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+            sentinel.setNext(temp);
+            temp.setPrevious(sentinel);
 
-	@Override
-	public int lastIndexOf(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+        }
+        else {
 
-	@Override
-	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            sentinel.next.setPrevious(temp);
+            sentinel.setNext(temp);
+            temp.setPrevious(sentinel);
+        }
+        numElements++;
 
-	@Override
-	public boolean remove(Object obj) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    }
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public void addLast(E e) {
+
+        DListNode<E> temp = new DListNode<>(e, null, null);
+
+        if (sentinel.next == sentinel) {
+
+            sentinel.setNext(temp);
+            temp.setPrevious(sentinel);
+
+        }
+        else {
+
+            temp.setPrevious(sentinel.previous);
+            sentinel.previous.setNext(temp);
+            temp.setNext(sentinel);
+        }
+        numElements++;
+    }
+
+    public E removeFirst() {
+
+        if (sentinel.next == sentinel) {
+            throw new NoSuchElementException();
+        }
+
+        E answer = sentinel.next.getData();
+
+        if (sentinel.next.next != sentinel) {
+
+            sentinel.next = sentinel.next.getNext();
+            ////////////////////////////////////////////
+
+        }
+
+
+        return answer;
+
+    }
+    // toDo
+    public boolean add(E e) {
+        return false;
+    }
+    // toDo
+    public void add(int index, E Element) {
+        
+        
+    }
+    // toDo
+    public void clear() {
+
+    }
+    // toDo
+    public boolean contains(Object obj) {
+        return false;
+    }
+    // toDo
+    public boolean equals(Object obj) {
+        return false;
+    }
+    // toDo
+    public E get(int index) {
+        return null;
+    }
+    // toDo
+    public E set(int index, E element) {
+        return null;
+    }
+    // toDo
+    public int indexOf(Object obj) {
+        return -1;
+    }
+    // toDo
+    public boolean isEmpty() {
+        return false;
+    }
+    // toDo
+    public Iterator<E> iterator() {
+        return null;
+    }
+    // toDo
+    public int lastIndexOf(Object obj){
+        return -1;
+    }
+    // toDo
+    public E remove(int index){
+        return null;
+    }
+    // toDo
+    public boolean remove(Object obj){
+        return false;
+    }
+
+    public int size() {
+        return numElements;
+    }
+
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("[ ");
+
+        for(E e: this) {
+            sb.append(e + " ");
+        }
+
+        sb.append("]");
+
+        return sb.toString();
+
+    }
+
 
 }

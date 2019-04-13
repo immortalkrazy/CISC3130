@@ -4,13 +4,13 @@ import java.util.*;
 
 public class MyLinkedList <E> implements MyList<E> {
 
-    private class MyLinkedListIterator implements Iterator<E> {
+    public class MyLinkedListIterator implements Iterator<E> {
 
         private DListNode<E> pointer;
 
         public MyLinkedListIterator () {
 
-            pointer = sentinel.getNext();
+            pointer = sentinel.next;
 
         }
         public E next() {
@@ -138,6 +138,10 @@ public class MyLinkedList <E> implements MyList<E> {
         return answer;
 
     }
+    
+    public Iterator<E> iterator() {
+          return new MyLinkedListIterator();
+      }
     // toDo
     public boolean add(E e) {
         return false;
@@ -174,10 +178,7 @@ public class MyLinkedList <E> implements MyList<E> {
     public boolean isEmpty() {
         return false;
     }
-    // toDo
-    public Iterator<E> iterator() {
-        return null;
-    }
+   
     // toDo
     public int lastIndexOf(Object obj){
         return -1;

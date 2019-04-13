@@ -1,5 +1,7 @@
 package Lists.LinkedList.Sentinel;
 
+import java.util.*;
+
 public class TestMyLinkedList {
 
       public static void main(String[] args) {
@@ -13,8 +15,12 @@ public class TestMyLinkedList {
           // }
           // print(aList);
           aList.addFirst(10);
-          System.out.println(aList);
-
+          //System.out.println(aList);
+          
+          Iterator<Integer> iter = aList.iterator();
+          while(iter.hasNext()) {
+                System.out.println(iter.next());
+          }
 
       }
 
