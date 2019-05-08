@@ -5,9 +5,23 @@ import java.util.*;
 
 public class Tokenizer implements Iterator<String>{
       
-      public Tokenizer() {
+      private ArrayList<Token> tokensArray = new ArrayList<Token>();
+      
+      public Tokenizer(String file) throws FileNotFoundException {
             
+            int place = 0;
+            File fileName = new File(file);
             
+            try (Scanner scanner = new Scanner(fileName)) {
+                  
+                  while(scanner.hasNext()) {
+                        
+                        String word = scanner.next();
+                        place++;
+                        tokensArray.add(new Token(file, word, place));
+                
+                  }
+            }          
       }
 
       @Override

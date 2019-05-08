@@ -2,16 +2,21 @@ package homework_03;
 
 public class Token {
       
-      private String fileNameString;
+      private String fileName;
       private String word;
       private int place;
       
-      
-      public String getFileNameString() {
-            return fileNameString;
+      public Token(String fileName, String word, int place) {
+            super();
+            this.fileName = fileName;
+            this.word = word;
+            this.place = place;
       }
-      public void setFileNameString(String fileNameString) {
-            this.fileNameString = fileNameString;
+      public String getFileName() {
+            return fileName;
+      }
+      public void setFileName(String fileName) {
+            this.fileName = fileName;
       }
       public String getWord() {
             return word;
@@ -19,16 +24,17 @@ public class Token {
       public void setWord(String word) {
             this.word = word;
       }
-      public int getCounter() {
+      public int getPlace() {
             return place;
       }
-      public void setCounter(int counter) {
-            this.place = counter;
+      public void setPlace(int place) {
+            this.place = place;
       }
+      
       @Override
       public String toString() {
             
-            return "Token [fileNameString=" + fileNameString + ", word=" + word + ", counter=" + place + "]";
+            return "In file " + fileName + ", " + word + " is at position " + place + " \n";
       }
       
       
