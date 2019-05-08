@@ -36,6 +36,15 @@ public class Tokenizer implements Iterator<String>{
             return null;
       }
       
+      public void printWords() {
+            
+            for (Token t: tokensArray) {
+                  
+                  System.out.println(t);                  
+            }
+            
+      }
+      
       
 
 }
