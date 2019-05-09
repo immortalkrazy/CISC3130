@@ -1,3 +1,9 @@
+/*********************************************************************************/
+/* Faisal Ibrahim                                                   Extra Credit */
+/* CISC 3130                                                                     */
+/*                                                                               */
+/*********************************************************************************/
+
 package Lists.LinkedList;
 
 import java.util.*;
@@ -40,10 +46,11 @@ public class MyLinkedList <E> implements MyList<E> {
         private DListNode<E> next;
 
         public DListNode() {
+            this(null, null, null);
+        }
 
-            this.data = null;
-            this.previous = null;
-            this.next = null;
+        public DListNode(E data) {
+            this (data, null, null);
         }
 
         public DListNode(E data, DListNode<E> previous, DListNode<E> next) {
@@ -87,14 +94,17 @@ public class MyLinkedList <E> implements MyList<E> {
 
     }
 
-    public void addFirst(E e) {
+    public void addFirst(E value) {
 
-        DListNode<E> temp = new DListNode<>(e, null, null);
+        DListNode<E> temp = new DListNode<>(value, null, null);
+        temp.data = value;
 
         if (sentinel.next == sentinel) {
 
             sentinel.setNext(temp);
+            sentinel.setPrevious(temp);
             temp.setPrevious(sentinel);
+            temp.setNext(sentinel);
 
         }
         else {
@@ -114,7 +124,9 @@ public class MyLinkedList <E> implements MyList<E> {
         if (sentinel.next == sentinel) {
 
             sentinel.setNext(temp);
+            sentinel.setPrevious(temp);
             temp.setPrevious(sentinel);
+            temp.setNext(sentinel);
 
         }
         else {
@@ -126,6 +138,8 @@ public class MyLinkedList <E> implements MyList<E> {
         numElements++;
     }
 
+    // still needs to be fixed
+
     public E removeFirst() {
 
         if (sentinel.next == sentinel) {
@@ -134,60 +148,139 @@ public class MyLinkedList <E> implements MyList<E> {
 
         E answer = sentinel.next.getData();
 
-        if (sentinel.next.next != sentinel) {
+        if (sentinel.next.getNext() != sentinel) {
+            sentinel.setNext(sentinel.next.getNext());
+            sentinel.next.next.setPrevious(sentinel);
+        }
+        else {
+            sentinel.setNext(sentinel);
+            sentinel.setPrevious(sentinel);
+        }
+        return answer;
+    }
 
-            sentinel.next = sentinel.next.getNext();
-            ////////////////////////////////////////////
+    // toDo
+    public E removeLast() {
 
+        if (sentinel.next == sentinel) {
+            throw new NoSuchElementException();
+        }
+        return null;
+    }
+
+
+    public E getFirst() {
+       if(sentinel.next == null){
+           throw new NoSuchElementException();
         }
 
-
-        return answer;
-
+        return sentinel.next.getData();
     }
-    // toDo
+    public E getLast() {
+        if(sentinel.next == null){
+           throw new NoSuchElementException();
+        }
+        return sentinel.previous.getData();
+    }
+
     public boolean add(E e) {
-        return false;
-    }
-    // toDo
-    public void add(int index, E Element) {
-        
-        
-    }
-    // toDo
-    public void clear() {
 
+        addLast(e);
+        return true;
     }
-    // toDo
+
+    public boolean add(int index, E Element) {
+        return false;
+    }
+
+    public void clear() {
+        sentinel.next = sentinel;
+        sentinel.previous = sentinel;
+    }
+
     public boolean contains(Object obj) {
-        return false;
+        return indexOf(obj) != -1;
     }
-    // toDo
+
     public boolean equals(Object obj) {
-        return false;
+
+        if (! (obj instanceof MyLinkedList)) {
+            return false;
+        }
+        MyLinkedList<E> another = (MyLinkedList<E>)obj;
+
+        if (another.size() != size()) {
+            return false;
+        }
+        DListNode<E> iter = sentinel.getNext();
+        DListNode<E> anotherIter = another.sentinel.getNext();
+        while (iter != null) {
+            if (! (iter.getData().equals(anotherIter.getData()))) {
+                return false;
+            }
+            iter = iter.getNext();
+            anotherIter = anotherIter.getNext();
+        }
+        return true;
     }
-    // toDo
+
     public E get(int index) {
-        return null;
+
+        if(isOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        return marchToIndex(index).getData();
     }
-    // toDo
+
     public E set(int index, E element) {
-        return null;
+
+        if(isOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        DListNode<E> iter = marchToIndex(index);
+        E old = iter.getData();
+        iter.setData(element);
+
+        return old;
     }
-    // toDo
+
     public int indexOf(Object obj) {
+
+        int index = 0;
+        DListNode<E> iter = sentinel.getNext();
+
+        while (iter != null) {
+            if (iter.getData().equals(obj)) {
+                return index;
+            }
+            index++;
+            iter = iter.getNext();
+        }
         return -1;
     }
-    // toDo
+
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
     }
-    // toDo
+
     public Iterator<E> iterator() {
-        return null;
+        return new MyLinkedListIterator();
     }
-    // toDo
-    public int lastIndexOf(Object obj){
+
+    public int lastIndexOf(Object obj) {
+
+        int index = size() - 1;
+        DListNode<E> iter = sentinel;
+
+        while (iter != null) {
+            if (iter.getData().equals(obj)) {
+                return index;
+            }
+            index--;
+            iter = iter.getPrevious();
+        }
         return -1;
     }
     // toDo
@@ -217,6 +310,26 @@ public class MyLinkedList <E> implements MyList<E> {
 
         return sb.toString();
 
+    }
+
+    private boolean isOutOfBounds(int index) {
+        return index < 0 || index > size();
+    }
+
+    private DListNode<E> marchToIndex(int index) {
+
+        if (isOutOfBounds(index)) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        int count = 0;
+        DListNode<E> temp = sentinel;
+
+        while(count < index) {
+            count ++;
+            temp = temp.getNext();
+        }
+        return temp;
     }
 
 

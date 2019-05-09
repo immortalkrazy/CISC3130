@@ -7,12 +7,15 @@ public class TestTokenizer {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        File dataFile = new File("test.txt");
-        System.out.println(dataFile.exists());
+          File dataFile = new File("test.txt");
+          System.out.println(dataFile.exists());
 
-        Tokenizer tz = new Tokenizer("test.txt");
-        tz.printWords();
+          Concordance cc = new Concordance("test.txt");
+          cc.add();
+          cc.print();
+          System.out.println("SIZE: " + cc.count("any")); 
 
+         
     }
 
 }

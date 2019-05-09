@@ -1,3 +1,9 @@
+/*********************************************************************************/
+/* Faisal Ibrahim                                                      Home Work */
+/* CISC 3130                                                                     */
+/*                                                                               */
+/*********************************************************************************/
+
 package homework_03;
 
 import java.io.*;
@@ -9,9 +15,7 @@ public class Tokenizer implements Iterator<Token>{
       private String file;
       private Scanner sc;
       private File fileName;
-      
-//      private ArrayList<Token> tokensArray = new ArrayList<Token>();
-      
+     
       public Tokenizer(String file) throws FileNotFoundException {
             
             place = 0;
@@ -19,17 +23,6 @@ public class Tokenizer implements Iterator<Token>{
             fileName = new File(file);
             sc = new Scanner(fileName);
             
-            
-//            try (Scanner scanner = new Scanner(fileName)) {
-//                  
-//                  while(scanner.hasNext()) {
-//                        
-//                        String word = scanner.next();
-//                        place++;
-//                        tokensArray.add(new Token(file, word, place));
-//                
-//                  }
-//            }          
       }
 
       @Override
