@@ -3,7 +3,7 @@ package homework_03;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class TestTokenizer {
+public class TestApp {
 
     public static void main(String[] args) throws FileNotFoundException {
 
