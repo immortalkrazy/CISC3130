@@ -14,7 +14,8 @@ public class TestTokenizer {
           cc.add();
           cc.print();
           System.out.println("SIZE: " + cc.count("any")); 
-
+          
+          System.out.println(cc);
          
     }
 

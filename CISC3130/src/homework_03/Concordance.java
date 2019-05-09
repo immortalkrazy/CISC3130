@@ -62,5 +62,10 @@ public class Concordance {
             }
 
       }
+      
+      public String toString() {
+            
+            return "Please use print, I dont know how to make String from this type of map YET :)";
+      }
 
 }
