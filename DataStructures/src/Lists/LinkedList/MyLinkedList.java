@@ -263,6 +263,7 @@ public class MyLinkedList <E> implements MyList<E> {
 
     public boolean isEmpty() {
         return size() == 0;
+        
     }
 
     public Iterator<E> iterator() {
