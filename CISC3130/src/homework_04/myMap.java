@@ -103,6 +103,15 @@ public class myMap {
             
       }
       
+      private int index (String str) {
+            
+            int total = 0;
+            for (int i = 0; i < str.length(); i++) {
+                  total += (str.charAt(i) - 'a');
+            }
+            return total % theTable.size();
+      }
+      
       
 
 } // end of class
