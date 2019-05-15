@@ -3,20 +3,19 @@
 /* CISC 3130                                                                     */
 /*                                                                               */
 /*********************************************************************************/
-
 package homework_04;
 
 public class TestMyMap {
-      
-      public static void main(String[] args) {           
-                     
+
+      public static void main(String[] args) {
+
             MyMap map = new MyMap();
-            
+
             System.out.println(map.size());
             map.put("Hello", 10);
             map.put("Hello", 11);
             map.put("Hello", 12);
-            map.put("Hello", 13);            
+            map.put("Hello", 13);
             System.out.println(map.containsKey("Hello"));
             System.out.println(map.conatinsValue(13));
             System.out.println(map.conatinsValue(14));
@@ -40,8 +39,8 @@ public class TestMyMap {
             System.out.println("Values:   \n" + map.values());
             System.out.println("Contains Game as Key? " + map.containsKey("Game"));
             System.out.println("Key Set: \n" + map.keySet());
-            System.out.println("get the value of the key Hello:   "+ map.get("Hello"));
-            System.out.println("get the value of the key Hello:   "+ map.get(3, "Hello"));
-            System.out.println("Size of the map now:  " + map.size());                  
+            System.out.println("get the value of the key Hello:   " + map.get("Hello"));
+            System.out.println("get the value of the key Hello:   " + map.get(3, "Hello"));
+            System.out.println("Size of the map now:  " + map.size());
       }
 }
